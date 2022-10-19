@@ -20,6 +20,6 @@
 
  <img src="https://latex.codecogs.com/svg.latex?B\to%20C" />
 
- where *f* is the rate that chemical A is added to the mix, *k* is the reaction rate of chemical B becoming chemical C, <i>r<sup>A</sup></i> is the rate of chemical A's diffusion, and <i>r<sup>B</sup></i> is the rate of chemical B's diffusion.
+ where *f* is the rate that chemical A is added to the mix, *k* is the reaction rate of chemical B becoming chemical C, <i>r<sub>A</sub></i> is the rate of chemical A's diffusion, and <i>r<sub>B</sub></i> is the rate of chemical B's diffusion.
 
  This Java program solves these equations using Euler integration. JAR files and a JSmooth executable are supplied in the "bin" folder. You will need to install Java on your computer for this to work.
