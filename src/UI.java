@@ -38,7 +38,7 @@ public class UI implements ActionListener, ChangeListener {
         renderer = new Renderer(0.055, 0.062, 1, 0.5);
         panel = new JPanel();
 
-        frame = new JFrame("Gray-Scott Equations");
+        frame = new JFrame("Reaction-Diffusion Simulator");
         frame.setSize(WIDTH, HEIGHT);
         frame.add(panel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +52,7 @@ public class UI implements ActionListener, ChangeListener {
     public void initializeComponents() {
         // Initialize necessary components
         img = new JLabel("");
-        heading = new JLabel("<html><h1>Gray-Scott Equations</h1>");
+        heading = new JLabel("<html><h1>Reaction-Diffusion Simulator</h1>");
         description = new JLabel("<html>This program allows you to run a simulation<br>of two virtual chemicals reacting, using an<br>equation called the Gray-Scott model.<br>Play with the parameters and see what you get.");
 
         // Initialize labels
