@@ -9,10 +9,10 @@
  - They form wiggly patterns when plotted.
 
  This program plots the Gray-Scott equations, a pair of two partial differential equations:
- 
+
  <img src="https://latex.codecogs.com/svg.latex?\partial_t%20A%20=%20r_A%20\nabla^2%20A%20-%20AB^2%20+%20f(1-A)" />
 
- <img src="https://latex.codecogs.com/svg.latex?\partial_t%20A%20=%20r_B%20\nabla^2%20B%20+%20AB^2%20-%20(f+k)B" />
+ <img src="https://latex.codecogs.com/svg.latex?\partial_t%20B%20=%20r_B%20\nabla^2%20B%20+%20AB^2%20-%20(f+k)B" />
 
  These equations express the reactions
 
