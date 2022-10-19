@@ -41,6 +41,7 @@ public class UI implements ActionListener, ChangeListener {
         frame = new JFrame("Gray-Scott Equations");
         frame.setSize(WIDTH, HEIGHT);
         frame.add(panel);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
         initializeComponents();
@@ -212,9 +213,7 @@ public class UI implements ActionListener, ChangeListener {
 
             if (playing) {
                 playBtn.setText("Pause");
-                new Thread(() -> {
-                    loop();
-                }).start();
+                new Thread(this::loop).start();
             } else {
                 playBtn.setText("Play");
             }
