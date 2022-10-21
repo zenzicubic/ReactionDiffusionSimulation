@@ -39,6 +39,7 @@ public class UI implements ActionListener, ChangeListener {
         panel = new JPanel();
 
         frame = new JFrame("Reaction-Diffusion Simulator");
+
         frame.setSize(WIDTH, HEIGHT);
         frame.add(panel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -71,33 +72,33 @@ public class UI implements ActionListener, ChangeListener {
 
         // Initialize sliders
         labelChoose = new JLabel("<html><h3>Or play with the sliders:</h3>");
-        slider1 = new JSlider(1, 100, (int)(renderer.f * 1000));
-        slider2 = new JSlider(1, 100, (int)(renderer.k * 1000));
-        slider3 = new JSlider(1, 1000, (int)(renderer.dA * 1000));
-        slider4 = new JSlider(1, 1000, (int)(renderer.dB * 1000));
+        slider1 = new JSlider(1, MAX_RATE, (int)(renderer.f * MAX_SLIDER));
+        slider2 = new JSlider(1, MAX_RATE, (int)(renderer.k * MAX_SLIDER));
+        slider3 = new JSlider(1, MAX_SLIDER, (int)(renderer.dA * MAX_SLIDER));
+        slider4 = new JSlider(1, MAX_SLIDER, (int)(renderer.dB * MAX_SLIDER));
 
         slider1.setAlignmentX(Component.LEFT_ALIGNMENT);
         slider1.addChangeListener(this);
-        slider1.setMajorTickSpacing(10);
-        slider1.setMinorTickSpacing(1);
+        slider1.setMajorTickSpacing(SLIDER_STEP_MAX);
+        slider1.setMinorTickSpacing(SLIDER_STEP_MIN);
         slider1.setPaintTicks(true);
 
         slider2.setAlignmentX(Component.LEFT_ALIGNMENT);
         slider2.addChangeListener(this);
-        slider2.setMajorTickSpacing(10);
-        slider2.setMinorTickSpacing(1);
+        slider2.setMajorTickSpacing(SLIDER_STEP_MAX);
+        slider2.setMinorTickSpacing(SLIDER_STEP_MIN);
         slider2.setPaintTicks(true);
 
         slider3.setAlignmentX(Component.LEFT_ALIGNMENT);
         slider3.addChangeListener(this);
-        slider3.setMajorTickSpacing(100);
-        slider3.setMinorTickSpacing(10);
+        slider3.setMajorTickSpacing(MAX_RATE);
+        slider3.setMinorTickSpacing(SLIDER_STEP_MAX);
         slider3.setPaintTicks(true);
 
         slider4.setAlignmentX(Component.LEFT_ALIGNMENT);
         slider4.addChangeListener(this);
-        slider4.setMajorTickSpacing(100);
-        slider4.setMinorTickSpacing(10);
+        slider4.setMajorTickSpacing(MAX_RATE);
+        slider4.setMinorTickSpacing(SLIDER_STEP_MAX);
         slider4.setPaintTicks(true);
 
         // Initialize buttons
@@ -200,10 +201,10 @@ public class UI implements ActionListener, ChangeListener {
             renderer.dA = presets[i][2];
             renderer.dB = presets[i][3];
 
-            slider1.setValue((int) (1000 * presets[i][0]));
-            slider2.setValue((int) (1000 * presets[i][1]));
-            slider3.setValue((int) (1000 * presets[i][2]));
-            slider4.setValue((int) (1000 * presets[i][3]));
+            slider1.setValue((int) (MAX_SLIDER * presets[i][0]));
+            slider2.setValue((int) (MAX_SLIDER * presets[i][1]));
+            slider3.setValue((int) (MAX_SLIDER * presets[i][2]));
+            slider4.setValue((int) (MAX_SLIDER * presets[i][3]));
             repaintLabels();
         } else if (e.getActionCommand().equals("reset")) {
             renderer.reset();
@@ -225,13 +226,13 @@ public class UI implements ActionListener, ChangeListener {
     public void stateChanged(ChangeEvent e) {
         // Handle slider changes
         if (e.getSource() == slider1) {
-            renderer.f = slider1.getValue() / 1000.0;
+            renderer.f = slider1.getValue() / (double)MAX_SLIDER;
         } else if (e.getSource() == slider2) {
-            renderer.k = slider2.getValue() / 1000.0;
+            renderer.k = slider2.getValue() / (double)MAX_SLIDER;
         } else if (e.getSource() == slider3) {
-            renderer.dA = slider3.getValue() / 1000.0;
+            renderer.dA = slider3.getValue() / (double)MAX_SLIDER;
         } else {
-            renderer.dB = slider4.getValue() / 1000.0;
+            renderer.dB = slider4.getValue() / (double)MAX_SLIDER;
         }
         renderer.reset();
         repaintLabels();
